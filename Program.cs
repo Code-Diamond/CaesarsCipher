@@ -4,46 +4,37 @@ using System.IO;
 using System.Linq;
 class Program
 {
-    //public static string[] alphabet = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
     static void Main(String[] args)
     {
         bool loopControl = true;
-
         while(loopControl)
         {
             Console.WriteLine("Welcome.  Type text to be cipherd..");
             string confidentialInformation = Console.ReadLine();
-
             int numberOfCharacters = confidentialInformation.Length;
             Console.WriteLine("Ok now give me a number for the rotation key..");
             string n = Console.ReadLine();
             try
             {
                 int rotationKey = Convert.ToInt32(n);
-
-
                 string hash = Encrypt(confidentialInformation, rotationKey, numberOfCharacters);
                 Console.WriteLine("Ciphered text: ");
                 Console.WriteLine("------------------------------------------------------\n" + hash + "\n------------------------------------------------------");
-
-                
             }
             catch (Exception e) { Console.WriteLine("Incorrect Information entered. Try again.../n/n"); }
         }
-
-
+        
         // Console.WriteLine(hash + "\n\n-----------\n\n");
-
-
-
+        
         //Other test
         /*
-        confidentialInformation = "xyz-abcdEFGHIJKLMNOpqrSt&u#*&)(*!#*&^%:{}0-=123vWxY-Z";
-        numberOfCharacters = confidentialInformation.Length;
-        rotationKey = 27;
-        hash = Encrypt (confidentialInformation, rotationKey, numberOfCharacters);
-        Console.WriteLine(confidentialInformation);
-        Console.WriteLine(hash);//*/
+            confidentialInformation = "xyz-abcdEFGHIJKLMNOpqrSt&u#*&)(*!#*&^%:{}0-=123vWxY-Z";
+            numberOfCharacters = confidentialInformation.Length;
+            rotationKey = 27;
+            hash = Encrypt (confidentialInformation, rotationKey, numberOfCharacters);
+            Console.WriteLine(confidentialInformation);
+            Console.WriteLine(hash);
+        */
     }
     public static string Encrypt(string confidentialInformation, int rotationKey, int numberOfCharacters)
     {
@@ -80,7 +71,6 @@ class Program
     public static char RotationAlgo(string letter, int rKey)
     {
         int asciiCharCode = (int)Convert.ToChar(letter);
-        //Console.WriteLine("codekey:"+(asciiCharCode) + ", rkey:"+rKey);
         bool itsAnUpper = Char.IsUpper(letter[0]);
         bool itsALower = Char.IsLower(letter[0]);
         char rotatedKey;
@@ -121,8 +111,5 @@ class Program
             //Console.WriteLine("I'm not EITHER capital letter or lowercase letter");
             return rotatedKey = (char)(asciiCharCode);
         }
-        //return rotatedKey = '!';
     }
-
-
 }
